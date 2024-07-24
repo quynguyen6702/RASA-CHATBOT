@@ -1,0 +1,142 @@
+version: "3.1"
+
+actions:
+ - action_rating
+ - action_price_hotel
+ - action_all_option
+ - action_dijkstra
+ - action_name_hotel
+ - action_location_nearby
+ - action_restaurant_nearby
+ - action_around_nearby
+ - action_default_fallback
+
+intents:
+  - greet
+  - goodbye
+  - thankyou
+  - where_location
+  - criteria_option_price
+  - criteria_option_rating
+  - criteria_all_option
+  - rating_location
+  - price_location
+  - all_option_location
+  - question_tour
+  - answer_tour
+  - question_infor
+  - question_name_hotel
+  - question_location_nearby
+  - question_restaurant_nearby
+  - question_around_nearby
+
+entities:
+  #Tìm khách sạn
+  - average_price
+  - district
+  - accommodation
+  # Tour
+  - name
+  - num_waypoints
+  # Thông tin khách sạn
+  - name_hotel
+
+slots:
+  average_price:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: average_price
+
+  district:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: district
+
+  accommodation:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: accommodation 
+      
+  name:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: name
+    
+  num_waypoints:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: num_waypoints
+  
+  name_hotel:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: name_hotel
+  
+responses:
+  utter_greet:
+  - text: "Xin chào bạn, tôi có thể giúp gì cho bạn?"
+    buttons: 
+    - title: "Tìm kiếm khách sạn"
+      payload: /where_location
+    - title: "Thông tin khách sạn"
+      payload: /question_infor
+    - title: "Tour du lịch"
+      payload: /question_tour
+    
+  utter_thankyou:
+  - text: "Không có gì, được hỗ trợ bạn là niềm vui của tôi"
+  utter_please_rephrase:
+  - text: "Xin lỗi, tôi không hiểu. Bạn có thể nói rõ hơn không?"
+    buttons: 
+    - title: "Tìm kiếm khách sạn"
+      payload: /where_location
+    - title: "Thông tin khách sạn"
+      payload: /question_infor
+    - title: "Tour du lịch"
+      payload: /question_tour
+  
+  utter_where_location:
+  - text: "Hiện tại chúng tôi có 2 tiêu chí lựa chọn khách sạn là:\n"
+    buttons: 
+    - title: "Theo giá"
+      payload: /criteria_option_price
+    - title: "Theo sao"
+      payload: /criteria_option_rating
+    - title: "Cả hai"
+      payload: /criteria_all_option
+
+  utter_criteria_option_price:
+  - text: "Vui lòng cho tôi biết bạn mong muốn tìm khách sạn với giá bao nhiêu và ở khu vực nào?\nNhập theo cú pháp:\n👉 Giá khách sạn: ... - khu vực: ....\n👉 Ví dụ: Giá khách sạn: 500.000 - khu vực: Ngũ Hành Sơn"
+
+  utter_criteria_option_rating:
+  - text: "Vui lòng cho tôi biết bạn mong muốn tìm khách sạn với số sao bao nhiêu và ở khu vực nào?\n\nNhập theo cú pháp:\n👉 Khách sạn: ... sao - khu vực: ....\n👉 Ví dụ: Khách sạn: 4 sao - khu vực: Ngũ Hành Sơn"
+
+  utter_criteria_all_option:
+  - text: "Vui lòng cho tôi biết bạn mong muốn tìm khách sạn với số sao và giá thành bao nhiêu và ở khu vực nào?\n-------------\nNhập theo cú pháp:\n👉 Khu vực: ... - Số sao: ... - Giá mong muốn: ...\n'Ví dụ: Khu vực: Ngũ Hành Sơn - Số sao: 3 - Giá mong muốn: 400.000'"
+          
+  utter_question_tour:
+  - text: "Để có thể gợi ý lộ trình du lịch cho bạn. Vui lòng trả lời theo cú pháp:\n👉 Địa điểm - Điểm đến\n-------------------------\nCó thể là khách sạn hoặc địa điểm du lịch bạn đang đứng\nVí dụ: Địa điểm: Cầu Rồng - Điểm đến: 4"
+
+  utter_question_infor:
+  - text: "Vui lòng cho tôi biết bạn muốn hỏi về khách sạn nào?\n(Chú ý: Những khách sạn chỉ nằm trong phạm vi TP.Đà Nẵng - Hội An và vài khách sạn ở khu vực lân cận)\nNhập theo cú pháp:\n👉 Thông tin KS: tên_KS\n"
+
+  utter_goodbye:
+  - text: "Tạm biệt bạn, nếu cần gì hãy liên hệ với tôi nhé 😉"
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+
+config:
+  store_entities_as_slots: false

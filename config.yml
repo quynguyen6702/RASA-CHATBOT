@@ -1,0 +1,39 @@
+recipe: default.v1
+assistant_id: rasa_bot
+
+language: vi
+pipeline:
+- name: WhitespaceTokenizer
+- name: RegexFeaturizer
+- name: LexicalSyntacticFeaturizer
+- name: CountVectorsFeaturizer
+- name: CountVectorsFeaturizer
+  analyzer: char_wb
+  min_ngram: 1
+  max_ngram: 4
+- name: rasa_nlu_examples.featurizers.sparse.TfIdfFeaturizer
+  min_ngram: 1
+  max_ngram: 2
+- name: DIETClassifier
+  epochs: 100
+  constrain_similarities: true
+- name: ResponseSelector
+  epochs: 250
+  constrain_similarities: true
+- name: FallbackClassifier
+  threshold: 0.8
+  ambiguity_threshold: 0.1  
+
+policies:
+  - name: TEDPolicy
+    max_history: 5
+    epochs: 200
+    batch_size: 50
+    max_training_samples: 300
+    constrain_similarities: true
+  - name: MemoizationPolicy
+  - name: RulePolicy
+  - name: RulePolicy
+    core_fallback_threshold: 0.4
+    core_fallback_action_name: "action_default_fallback"
+    enable_fallback_prediction: True
