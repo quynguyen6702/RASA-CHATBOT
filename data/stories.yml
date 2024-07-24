@@ -1,0 +1,148 @@
+version: "3.1"
+stories:
+- story: Chào hỏi thông thường
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: thankyou
+  - action: utter_thankyou
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: Dựa vào sao
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: where_location
+  - action: utter_where_location
+  - intent: criteria_option_rating
+  - action: utter_criteria_option_rating
+  - intent: rating_location
+  - action: action_rating
+
+- story: Dựa vào giá
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: where_location
+  - action: utter_where_location
+  - intent: criteria_option_price
+  - action: utter_criteria_option_price
+  - intent: price_location
+  - action: action_price_hotel
+
+- story: Dựa vào giá và số sao
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: where_location
+  - action: utter_where_location
+  - intent: criteria_all_option
+  - action: utter_criteria_all_option
+  - intent: all_option_location
+  - action: action_all_option
+
+- story: Tìm_tour
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: question_tour
+  - action: utter_question_tour
+  - intent: answer_tour
+  - action: action_dijkstra
+  - intent: thankyou
+  - action: utter_thankyou
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: Hỏi_thông_tin_khách_sạn
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: question_infor
+  - action: utter_question_infor
+  - intent: question_name_hotel
+  - action: action_name_hotel
+  - intent: question_location_nearby
+  - action: action_location_nearby
+  - intent: question_restaurant_nearby
+  - action: action_restaurant_nearby
+  - intent: question_around_nearby
+  - action: action_around_nearby
+
+- story: Câu chuyện 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: where_location
+  - action: utter_where_location
+  - intent: criteria_all_option
+  - action: utter_criteria_all_option
+  - intent: all_option_location
+  - action: action_all_option
+  - intent: question_infor
+  - action: utter_question_infor
+  - intent: question_name_hotel
+  - action: action_name_hotel
+  - intent: question_location_nearby
+  - action: action_location_nearby
+  - intent: question_restaurant_nearby
+  - action: action_restaurant_nearby
+  - intent: question_around_nearby
+  - action: action_around_nearby
+  - intent: question_tour
+  - action: utter_question_tour
+  - intent: answer_tour
+  - action: action_dijkstra
+
+
+- story: Câu chuyện 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: where_location
+  - action: utter_where_location
+  - intent: criteria_option_rating
+  - action: utter_criteria_option_rating
+  - intent: rating_location
+  - action: action_rating
+  - intent: question_infor
+  - action: utter_question_infor
+  - intent: question_name_hotel
+  - action: action_name_hotel
+  - intent: question_location_nearby
+  - action: action_location_nearby
+  - intent: question_restaurant_nearby
+  - action: action_restaurant_nearby
+  - intent: question_around_nearby
+  - action: action_around_nearby
+  - intent: question_tour
+  - action: utter_question_tour
+  - intent: answer_tour
+  - action: action_dijkstra
+
+
+- story: Câu chuyện 3
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: where_location
+  - action: utter_where_location
+  - intent: criteria_option_price
+  - action: utter_criteria_option_price
+  - intent: price_location
+  - action: action_price_hotel
+  - intent: question_infor
+  - action: utter_question_infor
+  - intent: question_name_hotel
+  - action: action_name_hotel
+  - intent: question_location_nearby
+  - action: action_location_nearby
+  - intent: question_restaurant_nearby
+  - action: action_restaurant_nearby
+  - intent: question_around_nearby
+  - action: action_around_nearby
+  - intent: question_tour
+  - action: utter_question_tour
+  - intent: answer_tour
+  - action: action_dijkstra

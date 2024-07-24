@@ -1,0 +1,35 @@
+version: "3.1"
+
+rules:
+- rule: Find_hotels_by_accommation
+  steps:
+  - intent: rating_location
+  - action: action_rating
+- rule: Find_hotels_by_level_price
+  steps:
+  - intent: price_location
+  - action: action_price_hotel
+- rule: Find tour
+  steps:
+  - intent: answer_tour
+  - action: action_dijkstra
+- rule: Infor_hotel
+  steps:
+  - intent: question_name_hotel
+  - action: action_name_hotel
+- rule: Infor_location_nearby
+  steps:
+  - intent: question_location_nearby
+  - action: action_location_nearby
+- rule: Infor_restaurant_nearby
+  steps:
+  - intent: question_restaurant_nearby
+  - action: action_restaurant_nearby
+- rule: Infor_around_nearby
+  steps:
+  - intent: question_around_nearby
+  - action: action_around_nearby
+- rule: Ask the user to rephrase whenever they send a message with low NLU confidence
+  steps:
+  - intent: nlu_fallback
+  - action: utter_please_rephrase
