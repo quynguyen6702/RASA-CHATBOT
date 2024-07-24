@@ -12,6 +12,6 @@
 ## Hình ảnh Chatbot tích hợp trên Facebook Messenger
 ![image (3)](https://github.com/user-attachments/assets/a96be1d0-03f8-4d24-a562-3bda291c92f1)
 
-## Video demo hoạt động của Chatbot
-[👉](https://drive.google.com/file/d/1fg7R9RlKaSbxhib9XAyAJYQZUJu1e4Bw/view?usp=sharing)
+## [👉](https://drive.google.com/file/d/1fg7R9RlKaSbxhib9XAyAJYQZUJu1e4Bw/view?usp=sharing)
+Video demo hoạt động của Chatbot
 
